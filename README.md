@@ -48,3 +48,26 @@ The k8s will have all the necessary standards that are needed for an application
 
 This k8s is a part of the borg which is not open source running by the google but the k8s is part of that borg which comes with the enterprise level container orchestration platform.
 We can't say that the Kubernetes is 100% still there are some challenges which are being developed a community of people to make it happen.
+
+Day-02
+Kubernetes Architecture
+Kubernetes is mainly divided into two parts: Control Plane (or Master Node) and Data Plane (or Worker Node).
+
+Control Plane
+The Control Plane consists of key components responsible for cluster management and control actions.
+
+The first and most important one is the API Server, which is often called the heart of the Kubernetes cluster. It handles requests from various sources such as kubectl, users, and internal cluster components.
+
+Next is the Scheduler, which is responsible for allocating resources and scheduling workloads onto the appropriate worker nodes. When multiple worker nodes are available, the Scheduler determines which node should execute a given pod.
+
+Another essential component is etcd, a distributed key-value store that holds the entire cluster’s state and configuration data.
+
+The Controller Manager is also part of the Control Plane. It manages various controllers that handle cluster operations such as auto-healing, auto-scaling, and load balancing.
+
+Data Plane (Worker Node)
+In the cluster, the smallest deployable unit is a Pod, which acts as a wrapper around one or more containers.
+To run containers, Kubernetes uses a container runtime, which is responsible for executing and managing containerized applications.
+
+One major advantage of Kubernetes is its auto-healing feature, powered by the Kubelet component present on each worker node. Kubelet ensures that pods are running as expected; if any issue occurs, it reports to the API Server in the Control Plane, which handles recovery or rescheduling.
+
+Another important component is Kube-Proxy, which manages network communication and load balancing across pods. It is responsible for service networking, assigning IP addresses, and ensuring requests are properly routed to different pods through mechanisms like ReplicaSets when scaling is needed.
