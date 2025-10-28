@@ -50,6 +50,8 @@ This k8s is a part of the borg which is not open source running by the google bu
 We can't say that the Kubernetes is 100% still there are some challenges which are being developed a community of people to make it happen.
 
 Day-02
+
+
 Kubernetes Architecture
 Kubernetes is mainly divided into two parts: Control Plane (or Master Node) and Data Plane (or Worker Node).
 
@@ -71,3 +73,50 @@ To run containers, Kubernetes uses a container runtime, which is responsible for
 One major advantage of Kubernetes is its auto-healing feature, powered by the Kubelet component present on each worker node. Kubelet ensures that pods are running as expected; if any issue occurs, it reports to the API Server in the Control Plane, which handles recovery or rescheduling.
 
 Another important component is Kube-Proxy, which manages network communication and load balancing across pods. It is responsible for service networking, assigning IP addresses, and ensuring requests are properly routed to different pods through mechanisms like ReplicaSets when scaling is needed.
+
+
+Day 03:
+docker run hello-world
+Tests if Docker is correctly installed and running.
+sudo apt install -y apt-transport-https ca-certificates curl
+Allows secure downloads over HTTPS and adds tools like curl for fetching files.
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+Ensures downloaded Kubernetes packages are verified and trusted.
+echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+Adds the official Kubernetes package source to the system.
+sudo snap install kubectl --classic
+sudo snap install kubectl --classic
+installs kubectl, the Kubernetes CLI used to control and manage clusters.
+kubectl version --client
+Confirms that kubectl is installed and displays client version details.
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+Downloads the latest stable Minikube binary for Linux.
+sudo install minikube-linux-amd64 /usr/local/bin/minikube
+Moves the Minikube binary to a system path, making it accessible globally.
+minikube version
+Verifies that Minikube was successfully installed.
+minikube start --driver=docker
+Initializes a local Kubernetes cluster using Docker as the virtualization driver.
+minikube status
+Displays the current state of the Minikube cluster components.
+kubectl cluster-info
+Shows cluster details such as API server and DNS info.
+kubectl config view
+Displays kubeconfig details like context, users, and cluster settings.
+kubectl get nodes
+Lists all active nodes in your cluster (usually one node in Minikube).
+kubectl get deployment
+Displays all deployed applications and their current state.
+kubectl get pods
+Lists all pods (containers) running in the cluster.
+kubectl get services
+Lists Kubernetes services that expose your pods to internal or external traffic.
+minikube service my-nginx
+Opens the exposed service (e.g., Nginx) in your web browser via Minikube tunnel.
+Docker, kubectl, and Minikube successfully installed and configured.
+Local Kubernetes cluster running using Docker driver.
+Verified nodes, pods, and services accessible through kubectl and Minikube.
+
+Docker	Container runtime	docker run hello-world
+kubectl	Kubernetes CLI	kubectl version --client
+Minikube	Local Kubernetes cluster	minikube version / minikube start
