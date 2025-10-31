@@ -76,43 +76,60 @@ Another important component is Kube-Proxy, which manages network communication a
 
 
 Day 03:
-docker run hello-world
+  docker run hello-world
 Tests if Docker is correctly installed and running.
-sudo apt install -y apt-transport-https ca-certificates curl
+
+  sudo apt install -y apt-transport-https ca-certificates curl
 Allows secure downloads over HTTPS and adds tools like curl for fetching files.
-curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+
+  curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 Ensures downloaded Kubernetes packages are verified and trusted.
-echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+
+  echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
 Adds the official Kubernetes package source to the system.
-sudo snap install kubectl --classic
-sudo snap install kubectl --classic
+
+  sudo snap install kubectl --classic
 installs kubectl, the Kubernetes CLI used to control and manage clusters.
-kubectl version --client
+
+  kubectl version --client
 Confirms that kubectl is installed and displays client version details.
-curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+
+  curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
 Downloads the latest stable Minikube binary for Linux.
-sudo install minikube-linux-amd64 /usr/local/bin/minikube
+
+  sudo install minikube-linux-amd64 /usr/local/bin/minikube
 Moves the Minikube binary to a system path, making it accessible globally.
-minikube version
+
+  minikube version
 Verifies that Minikube was successfully installed.
-minikube start --driver=docker
+
+  minikube start --driver=docker
 Initializes a local Kubernetes cluster using Docker as the virtualization driver.
-minikube status
+
+  minikube status
 Displays the current state of the Minikube cluster components.
-kubectl cluster-info
+
+  kubectl cluster-info
 Shows cluster details such as API server and DNS info.
-kubectl config view
+
+  kubectl config view
 Displays kubeconfig details like context, users, and cluster settings.
-kubectl get nodes
+
+  kubectl get nodes
 Lists all active nodes in your cluster (usually one node in Minikube).
-kubectl get deployment
+
+  kubectl get deployment
 Displays all deployed applications and their current state.
-kubectl get pods
+
+  kubectl get pods
 Lists all pods (containers) running in the cluster.
-kubectl get services
+
+  kubectl get services
 Lists Kubernetes services that expose your pods to internal or external traffic.
-minikube service my-nginx
+
+  minikube service my-nginx
 Opens the exposed service (e.g., Nginx) in your web browser via Minikube tunnel.
+
 Docker, kubectl, and Minikube successfully installed and configured.
 Local Kubernetes cluster running using Docker driver.
 Verified nodes, pods, and services accessible through kubectl and Minikube.
@@ -120,3 +137,25 @@ Verified nodes, pods, and services accessible through kubectl and Minikube.
 Docker	Container runtime	docker run hello-world
 kubectl	Kubernetes CLI	kubectl version --client
 Minikube	Local Kubernetes cluster	minikube version / minikube start
+
+Day - 03
+
+The other day I have installed the minikube and kubectl where this minikube is a local environment to create and manage the clusters.
+And kubectl is where it manages this local environment by communication with the clusters.
+
+But with this miikube we can just practice kubernetes where it is actually not been used in the real production.
+Also we have other tools like microk8s like minikube
+Now to manage the create the clusters and manage them in the real world we have platforms Kubernetes, Openshift, Rancher and like EKS, GKE, and AKS which are used in the real production.
+
+Here also this self managed Kubernetes has been used most of the time until unless there is critical situation  they use managed solutions like EKS.
+
+There is a popular one which is widely used is kops-Kubernetes operations.
+This will automate the lifecycle of Kubernetes like creating, running, deleting and all the other tasks.
+This kops will reduce the manual way of maintaining or managing the clusters.
+The configurations are stores in s3 bucket which helps in reproducibility and management.
+
+We need to configure AWS Cli and permissions like EC2 and S3.
+We need to create a S3 bucket to store the state of the cluster.
+Then need  to use the kops to create the cluster by specifying the name region node count.
+After which we will use a real time DNS domain or can be a local domain.
+Finally need to finalize the cluster with the kops commands and then need to aware of the charges.
