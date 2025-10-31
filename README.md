@@ -138,7 +138,7 @@ Docker	Container runtime	docker run hello-world
 kubectl	Kubernetes CLI	kubectl version --client
 Minikube	Local Kubernetes cluster	minikube version / minikube start
 
-Day - 03
+Day - 04
 
 The other day I have installed the minikube and kubectl where this minikube is a local environment to create and manage the clusters.
 And kubectl is where it manages this local environment by communication with the clusters.
